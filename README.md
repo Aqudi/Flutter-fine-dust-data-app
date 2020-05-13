@@ -8,6 +8,8 @@
 - api 사용하는 법
 - test 작성하는 법
 - [Json to Dart](https://javiercbk.github.io/json_to_dart/) Json 데이터를 기반으로 Dart 모델 파일을 만들어줌
+- BehaviorSubject 를 이용한 BLoC 패턴 적용
+
 
 ## 앱 구동을 위해 필요한 사항들
 - AirVisual API Key

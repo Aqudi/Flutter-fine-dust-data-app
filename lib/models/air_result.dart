@@ -115,7 +115,7 @@ class Weather {
   int tp;
   String ts;
   int wd;
-  double ws;
+  int ws;
 
   Weather({this.hu, this.ic, this.pr, this.tp, this.ts, this.wd, this.ws});
 

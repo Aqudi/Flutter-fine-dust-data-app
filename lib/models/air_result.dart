@@ -109,13 +109,13 @@ class Pollution {
 }
 
 class Weather {
-  int hu;
+  num hu;
   String ic;
-  int pr;
-  int tp;
+  num pr;
+  num tp;
   String ts;
-  int wd;
-  int ws;
+  num wd;
+  num ws;
 
   Weather({this.hu, this.ic, this.pr, this.tp, this.ts, this.wd, this.ws});
 

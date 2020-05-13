@@ -40,9 +40,15 @@ class _MainState extends State<Main> {
         child: StreamBuilder<Object>(
             stream: airBloc.airResult$,
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return buildPadding(snapshot.data);
-              } else {
+              try {
+                print(snapshot.hasData);
+                if (snapshot.hasData && !snapshot.hasError) {
+                  return buildPadding(snapshot.data);
+                } else {
+                  return CircularProgressIndicator();
+                }
+              } catch (e) {
+                print(e);
                 return CircularProgressIndicator();
               }
             }),
@@ -125,10 +131,10 @@ class _MainState extends State<Main> {
               borderRadius: BorderRadius.circular(30),
               child: RaisedButton(
                 color: Colors.green,
-                  onPressed: (){
-                    airBloc.fetch();
-                  },
-                  child: Padding(
+                onPressed: () {
+                  airBloc.fetch();
+                },
+                child: Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 15.0,
                     horizontal: 50,

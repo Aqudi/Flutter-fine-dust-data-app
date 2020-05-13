@@ -1,6 +1,7 @@
 # fluttermiseapp
 
 플러터로 만든 미세먼지 앱
+오준석의 생존코딩 : flutter 중급
 
 ## Getting Started
 

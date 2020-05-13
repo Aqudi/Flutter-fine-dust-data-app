@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fluttermiseapp/models/AirResult.dart';
+import 'package:fluttermiseapp/models/air_result.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -59,106 +59,105 @@ class _MainState extends State<Main> {
       body: _result == null
           ? Center(child: CircularProgressIndicator())
           : Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                '현재 위치의 미세먼지',
-                style:
-                TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        color: getMappedData(_result)[mappedColor],
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Text('얼굴사진'),
-                            Text(
-                              '${_result.data.current.pollution.aqius}',
-                              style: miseNumberStyle,
-                            ),
-                            Text(
-                              getMappedData(_result)[mappedStr],
-                              style: mseTextStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.network(
-                                  'https://airvisual.com/images/${_result.data
-                                      .current.weather.ic}.png',
-                                  width: 32,
-                                  height: 32,
-                                ),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                Text(
-                                  '${_result.data.current.weather.tp}',
-                                  style: miseOtherInfoTextStyle,
-                                ),
-                              ],
-                            ),
-                            Text(
-                              '${_result.data.current.weather.hu}%',
-                              style: miseOtherInfoTextStyle,
-                            ),
-                            Text(
-                              '${_result.data.current.weather.ws}m/s',
-                              style: miseOtherInfoTextStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: RaisedButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    setState(() {
-                      this._result = null;
-                    });
-                    fetchData().then((airResult) {
-                      setState(() {
-                        this._result = airResult;
-                      });
-                    });
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 15.0,
-                      horizontal: 50,
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '현재 위치의 미세먼지',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    child: Icon(Icons.refresh, color: Colors.white),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              color: getMappedData(_result)[mappedColor],
+                              padding: const EdgeInsets.all(8),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Text('얼굴사진'),
+                                  Text(
+                                    '${_result.data.current.pollution.aqius}',
+                                    style: miseNumberStyle,
+                                  ),
+                                  Text(
+                                    getMappedData(_result)[mappedStr],
+                                    style: mseTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Image.network(
+                                        'https://airvisual.com/images/${_result.data.current.weather.ic}.png',
+                                        width: 32,
+                                        height: 32,
+                                      ),
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Text(
+                                        '${_result.data.current.weather.tp}',
+                                        style: miseOtherInfoTextStyle,
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    '${_result.data.current.weather.hu}%',
+                                    style: miseOtherInfoTextStyle,
+                                  ),
+                                  Text(
+                                    '${_result.data.current.weather.ws}m/s',
+                                    style: miseOtherInfoTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: RaisedButton(
+                        color: Colors.green,
+                        onPressed: () {
+                          setState(() {
+                            this._result = null;
+                          });
+                          fetchData().then((airResult) {
+                            setState(() {
+                              this._result = airResult;
+                            });
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15.0,
+                            horizontal: 50,
+                          ),
+                          child: Icon(Icons.refresh, color: Colors.white),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
+              ),
+            ),
     );
   }
 
